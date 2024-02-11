@@ -27,9 +27,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            textBox8 = new TextBox();
             label9 = new Label();
             panel1 = new Panel();
+            search = new NumericUpDown();
             button2 = new Button();
             listBox1 = new ListBox();
             button1 = new Button();
@@ -50,6 +50,7 @@
             label8 = new Label();
             textNam = new TextBox();
             panel3 = new Panel();
+            button5 = new Button();
             changingHous = new NumericUpDown();
             changingHab = new NumericUpDown();
             changingServ = new NumericUpDown();
@@ -76,7 +77,9 @@
             changingEmail = new TextBox();
             changingReg = new TextBox();
             label10 = new Label();
+            count = new Label();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)search).BeginInit();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)textInn).BeginInit();
             ((System.ComponentModel.ISupportInitialize)textServ).BeginInit();
@@ -88,33 +91,34 @@
             panel4.SuspendLayout();
             SuspendLayout();
             // 
-            // textBox8
-            // 
-            textBox8.Location = new Point(12, 27);
-            textBox8.Name = "textBox8";
-            textBox8.Size = new Size(100, 23);
-            textBox8.TabIndex = 0;
-            // 
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(64, 9);
+            label9.Location = new Point(51, 3);
             label9.Name = "label9";
-            label9.Size = new Size(104, 15);
+            label9.Size = new Size(154, 15);
             label9.TabIndex = 1;
-            label9.Text = "Поиск по номеру";
+            label9.Text = "Поиск по номеру в списке";
             // 
             // panel1
             // 
             panel1.BackColor = SystemColors.Menu;
+            panel1.Controls.Add(count);
+            panel1.Controls.Add(search);
             panel1.Controls.Add(button2);
             panel1.Controls.Add(listBox1);
             panel1.Controls.Add(label9);
-            panel1.Controls.Add(textBox8);
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
             panel1.Size = new Size(235, 596);
             panel1.TabIndex = 0;
+            // 
+            // search
+            // 
+            search.Location = new Point(12, 27);
+            search.Name = "search";
+            search.Size = new Size(120, 23);
+            search.TabIndex = 4;
             // 
             // button2
             // 
@@ -124,6 +128,7 @@
             button2.TabIndex = 3;
             button2.Text = "Найти";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // listBox1
             // 
@@ -131,14 +136,14 @@
             listBox1.ItemHeight = 15;
             listBox1.Location = new Point(12, 62);
             listBox1.Name = "listBox1";
-            listBox1.Size = new Size(220, 529);
+            listBox1.Size = new Size(220, 499);
             listBox1.TabIndex = 2;
             listBox1.SelectedIndexChanged += listBox1_SelectedIndexChanged;
             // 
             // button1
             // 
             button1.BackColor = Color.Ivory;
-            button1.Location = new Point(8, 375);
+            button1.Location = new Point(3, 334);
             button1.Name = "button1";
             button1.Size = new Size(214, 26);
             button1.TabIndex = 0;
@@ -150,7 +155,7 @@
             // 
             label1.AutoSize = true;
             label1.BackColor = Color.Linen;
-            label1.Location = new Point(54, 25);
+            label1.Location = new Point(48, 4);
             label1.Name = "label1";
             label1.Size = new Size(135, 15);
             label1.TabIndex = 1;
@@ -158,21 +163,21 @@
             // 
             // textReg
             // 
-            textReg.Location = new Point(124, 88);
+            textReg.Location = new Point(122, 66);
             textReg.Name = "textReg";
             textReg.Size = new Size(100, 23);
             textReg.TabIndex = 2;
             // 
             // textEmail
             // 
-            textEmail.Location = new Point(124, 266);
+            textEmail.Location = new Point(122, 244);
             textEmail.Name = "textEmail";
             textEmail.Size = new Size(100, 23);
             textEmail.TabIndex = 6;
             // 
             // textSquare
             // 
-            textSquare.Location = new Point(124, 313);
+            textSquare.Location = new Point(122, 291);
             textSquare.Name = "textSquare";
             textSquare.Size = new Size(100, 23);
             textSquare.TabIndex = 7;
@@ -180,7 +185,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(14, 93);
+            label2.Location = new Point(12, 71);
             label2.Name = "label2";
             label2.Size = new Size(46, 15);
             label2.TabIndex = 9;
@@ -189,7 +194,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(10, 128);
+            label3.Location = new Point(8, 106);
             label3.Name = "label3";
             label3.Size = new Size(92, 15);
             label3.TabIndex = 10;
@@ -198,7 +203,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(3, 178);
+            label4.Location = new Point(1, 156);
             label4.Name = "label4";
             label4.Size = new Size(114, 30);
             label4.TabIndex = 11;
@@ -207,7 +212,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(10, 224);
+            label5.Location = new Point(8, 202);
             label5.Name = "label5";
             label5.Size = new Size(80, 15);
             label5.TabIndex = 12;
@@ -216,7 +221,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(10, 266);
+            label6.Location = new Point(8, 244);
             label6.Name = "label6";
             label6.Size = new Size(36, 15);
             label6.TabIndex = 13;
@@ -225,7 +230,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(5, 302);
+            label7.Location = new Point(3, 280);
             label7.Name = "label7";
             label7.Size = new Size(97, 45);
             label7.TabIndex = 14;
@@ -250,28 +255,28 @@
             panel2.Controls.Add(textReg);
             panel2.Controls.Add(label1);
             panel2.Controls.Add(button1);
-            panel2.Location = new Point(373, 179);
+            panel2.Location = new Point(349, 218);
             panel2.Name = "panel2";
-            panel2.Size = new Size(227, 412);
+            panel2.Size = new Size(227, 373);
             panel2.TabIndex = 1;
             // 
             // textInn
             // 
-            textInn.Location = new Point(124, 216);
+            textInn.Location = new Point(122, 194);
             textInn.Name = "textInn";
             textInn.Size = new Size(100, 23);
             textInn.TabIndex = 19;
             // 
             // textServ
             // 
-            textServ.Location = new Point(124, 176);
+            textServ.Location = new Point(122, 154);
             textServ.Name = "textServ";
             textServ.Size = new Size(100, 23);
             textServ.TabIndex = 18;
             // 
             // textHab
             // 
-            textHab.Location = new Point(124, 128);
+            textHab.Location = new Point(122, 106);
             textHab.Name = "textHab";
             textHab.Size = new Size(100, 23);
             textHab.TabIndex = 17;
@@ -279,7 +284,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(14, 54);
+            label8.Location = new Point(12, 32);
             label8.Name = "label8";
             label8.Size = new Size(59, 15);
             label8.TabIndex = 16;
@@ -287,7 +292,7 @@
             // 
             // textNam
             // 
-            textNam.Location = new Point(124, 49);
+            textNam.Location = new Point(122, 27);
             textNam.Name = "textNam";
             textNam.Size = new Size(100, 23);
             textNam.TabIndex = 15;
@@ -295,6 +300,7 @@
             // panel3
             // 
             panel3.BackColor = Color.WhiteSmoke;
+            panel3.Controls.Add(button5);
             panel3.Controls.Add(changingHous);
             panel3.Controls.Add(changingHab);
             panel3.Controls.Add(changingServ);
@@ -321,6 +327,17 @@
             panel3.Size = new Size(600, 593);
             panel3.TabIndex = 2;
             panel3.Paint += panel3_Paint;
+            // 
+            // button5
+            // 
+            button5.BackColor = Color.MistyRose;
+            button5.Location = new Point(349, 189);
+            button5.Name = "button5";
+            button5.Size = new Size(227, 23);
+            button5.TabIndex = 38;
+            button5.Text = "Зарегистрироавть случайный ЖЭК";
+            button5.UseVisualStyleBackColor = false;
+            button5.Click += button5_Click;
             // 
             // changingHous
             // 
@@ -370,9 +387,9 @@
             panel4.Controls.Add(label22);
             panel4.Controls.Add(label21);
             panel4.Controls.Add(label19);
-            panel4.Location = new Point(373, 3);
+            panel4.Location = new Point(349, 3);
             panel4.Name = "panel4";
-            panel4.Size = new Size(222, 174);
+            panel4.Size = new Size(227, 174);
             panel4.TabIndex = 32;
             // 
             // button3
@@ -384,6 +401,7 @@
             button3.TabIndex = 7;
             button3.Text = "Зарегистрировать";
             button3.UseVisualStyleBackColor = false;
+            button3.Click += button3_Click;
             // 
             // textBox2
             // 
@@ -402,16 +420,17 @@
             // label22
             // 
             label22.AutoSize = true;
-            label22.Location = new Point(14, 87);
+            label22.Location = new Point(12, 51);
             label22.Name = "label22";
             label22.Size = new Size(59, 15);
             label22.TabIndex = 4;
             label22.Text = "Название";
+            label22.Click += label22_Click;
             // 
             // label21
             // 
             label21.AutoSize = true;
-            label21.Location = new Point(14, 46);
+            label21.Location = new Point(12, 87);
             label21.Name = "label21";
             label21.Size = new Size(46, 15);
             label21.TabIndex = 3;
@@ -432,45 +451,45 @@
             changing_number_hex.AutoSize = true;
             changing_number_hex.Location = new Point(230, 90);
             changing_number_hex.Name = "changing_number_hex";
-            changing_number_hex.Size = new Size(44, 15);
+            changing_number_hex.Size = new Size(13, 15);
             changing_number_hex.TabIndex = 31;
-            changing_number_hex.Text = "label18";
+            changing_number_hex.Text = "0";
             // 
             // label18
             // 
             label18.AutoSize = true;
             label18.Location = new Point(39, 90);
             label18.Name = "label18";
-            label18.Size = new Size(164, 15);
+            label18.Size = new Size(136, 15);
             label18.TabIndex = 30;
-            label18.Text = "Номер в 16-ричной системе";
+            label18.Text = "id в 16-ричной системе";
             // 
             // changing_number
             // 
             changing_number.AutoSize = true;
             changing_number.Location = new Point(159, 59);
             changing_number.Name = "changing_number";
-            changing_number.Size = new Size(44, 15);
+            changing_number.Size = new Size(13, 15);
             changing_number.TabIndex = 29;
-            changing_number.Text = "label18";
+            changing_number.Text = "0";
             // 
             // label17
             // 
             label17.AutoSize = true;
             label17.Location = new Point(41, 59);
             label17.Name = "label17";
-            label17.Size = new Size(45, 15);
+            label17.Size = new Size(17, 15);
             label17.TabIndex = 28;
-            label17.Text = "Номер";
+            label17.Text = "id";
             // 
             // changing_name
             // 
             changing_name.AutoSize = true;
             changing_name.Location = new Point(159, 35);
             changing_name.Name = "changing_name";
-            changing_name.Size = new Size(44, 15);
+            changing_name.Size = new Size(13, 15);
             changing_name.TabIndex = 27;
-            changing_name.Text = "label17";
+            changing_name.Text = "0";
             // 
             // label11
             // 
@@ -547,6 +566,15 @@
             label10.TabIndex = 2;
             label10.Text = "Информация о ";
             // 
+            // count
+            // 
+            count.AutoSize = true;
+            count.Location = new Point(186, 570);
+            count.Name = "count";
+            count.Size = new Size(13, 15);
+            count.TabIndex = 5;
+            count.Text = "0";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -560,6 +588,7 @@
             Text = "Form1";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)search).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)textInn).EndInit();
@@ -576,8 +605,6 @@
         }
 
         #endregion
-
-        private TextBox textBox8;
         private Label label9;
         private Panel panel1;
         private ListBox listBox1;
@@ -626,5 +653,8 @@
         private NumericUpDown changingServ;
         private Label label20;
         private TextBox changingSquare;
+        private NumericUpDown search;
+        private Button button5;
+        private Label count;
     }
 }
