@@ -114,12 +114,12 @@ namespace OOP1lb
         {
             try
             {
-               int selectedIndex = zheckList.FindIndex(item => item.Number1 == selectedNum);
+                int selectedIndex = (int)search.Value;
                 if (selectedIndex < 0 || selectedIndex > zheckList.Count - 1)
                 {
-                    throw new ArrayExeption("Ёлемент не найден", (int)search.Value);
+                    throw new ArrayExeption("Ёлемент не найден", selectedIndex);
                 }
-                Zheck selected = zheckList[(int)search.Value];
+                Zheck selected = zheckList[selectedIndex];
                 if (selected != null)
                 {
                     SelectedZheck(selected);
