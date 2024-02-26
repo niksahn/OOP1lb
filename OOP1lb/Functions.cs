@@ -16,7 +16,7 @@ namespace OOP1lb
 
         internal static bool IsString(string str)
         {
-            string pattern = @"^[A-Za-zА-Яа-я]([A-Za-zА-Яа-я]|[1-9])*$";
+            string pattern = @"^([A-Za-zА-Яа-я]|[0-9]|[_])*$";
             Match match = Regex.Match(str, pattern);
             if (match.Success)
             {

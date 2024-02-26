@@ -27,9 +27,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             label9 = new Label();
             panel1 = new Panel();
-            search = new NumericUpDown();
+            search = new TextBox();
+            check = new Button();
+            count = new Label();
             button2 = new Button();
             listBox1 = new ListBox();
             button1 = new Button();
@@ -44,25 +47,19 @@
             label6 = new Label();
             label7 = new Label();
             panel2 = new Panel();
+            button5 = new Button();
             textInn = new NumericUpDown();
             textServ = new NumericUpDown();
             textHab = new NumericUpDown();
             label8 = new Label();
             textNam = new TextBox();
             panel3 = new Panel();
-            button5 = new Button();
+            button6 = new Button();
             changingHous = new NumericUpDown();
             changingHab = new NumericUpDown();
             changingServ = new NumericUpDown();
             label20 = new Label();
             button4 = new Button();
-            panel4 = new Panel();
-            button3 = new Button();
-            textBox2 = new TextBox();
-            textBox1 = new TextBox();
-            label22 = new Label();
-            label21 = new Label();
-            label19 = new Label();
             changing_number_hex = new Label();
             label18 = new Label();
             changing_number = new Label();
@@ -77,9 +74,7 @@
             changingEmail = new TextBox();
             changingReg = new TextBox();
             label10 = new Label();
-            count = new Label();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)search).BeginInit();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)textInn).BeginInit();
             ((System.ComponentModel.ISupportInitialize)textServ).BeginInit();
@@ -88,43 +83,66 @@
             ((System.ComponentModel.ISupportInitialize)changingHous).BeginInit();
             ((System.ComponentModel.ISupportInitialize)changingHab).BeginInit();
             ((System.ComponentModel.ISupportInitialize)changingServ).BeginInit();
-            panel4.SuspendLayout();
             SuspendLayout();
             // 
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(51, 3);
+            label9.Location = new Point(58, 4);
             label9.Name = "label9";
-            label9.Size = new Size(154, 15);
+            label9.Size = new Size(194, 20);
             label9.TabIndex = 1;
             label9.Text = "Поиск по номеру в списке";
             // 
             // panel1
             // 
             panel1.BackColor = SystemColors.Menu;
-            panel1.Controls.Add(count);
             panel1.Controls.Add(search);
+            panel1.Controls.Add(check);
+            panel1.Controls.Add(count);
             panel1.Controls.Add(button2);
             panel1.Controls.Add(listBox1);
             panel1.Controls.Add(label9);
+            panel1.Dock = DockStyle.Left;
             panel1.Location = new Point(0, 0);
+            panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(235, 596);
+            panel1.Size = new Size(269, 810);
             panel1.TabIndex = 0;
             // 
             // search
             // 
-            search.Location = new Point(12, 27);
+            search.Location = new Point(12, 36);
+            search.Margin = new Padding(3, 4, 3, 4);
             search.Name = "search";
-            search.Size = new Size(120, 23);
-            search.TabIndex = 4;
+            search.Size = new Size(114, 27);
+            search.TabIndex = 16;
+            // 
+            // check
+            // 
+            check.Location = new Point(12, 744);
+            check.Name = "check";
+            check.Size = new Size(186, 55);
+            check.TabIndex = 6;
+            check.Text = "Замерить производительность";
+            check.UseVisualStyleBackColor = true;
+            check.Click += check_Click;
+            // 
+            // count
+            // 
+            count.AutoSize = true;
+            count.Location = new Point(240, 744);
+            count.Name = "count";
+            count.Size = new Size(17, 20);
+            count.TabIndex = 5;
+            count.Text = "0";
             // 
             // button2
             // 
-            button2.Location = new Point(133, 27);
+            button2.Location = new Point(152, 36);
+            button2.Margin = new Padding(3, 4, 3, 4);
             button2.Name = "button2";
-            button2.Size = new Size(99, 23);
+            button2.Size = new Size(113, 31);
             button2.TabIndex = 3;
             button2.Text = "Найти";
             button2.UseVisualStyleBackColor = true;
@@ -132,20 +150,23 @@
             // 
             // listBox1
             // 
+            listBox1.BackColor = SystemColors.Info;
             listBox1.FormattingEnabled = true;
-            listBox1.ItemHeight = 15;
-            listBox1.Location = new Point(12, 62);
+            listBox1.ItemHeight = 20;
+            listBox1.Location = new Point(12, 71);
+            listBox1.Margin = new Padding(3, 4, 3, 4);
             listBox1.Name = "listBox1";
-            listBox1.Size = new Size(220, 499);
+            listBox1.Size = new Size(251, 664);
             listBox1.TabIndex = 2;
             listBox1.SelectedIndexChanged += listBox1_SelectedIndexChanged;
             // 
             // button1
             // 
             button1.BackColor = Color.Ivory;
-            button1.Location = new Point(3, 334);
+            button1.Location = new Point(7, 536);
+            button1.Margin = new Padding(3, 4, 3, 4);
             button1.Name = "button1";
-            button1.Size = new Size(214, 26);
+            button1.Size = new Size(242, 35);
             button1.TabIndex = 0;
             button1.Text = "Зарегистрировать";
             button1.UseVisualStyleBackColor = false;
@@ -155,90 +176,96 @@
             // 
             label1.AutoSize = true;
             label1.BackColor = Color.Linen;
-            label1.Location = new Point(48, 4);
+            label1.Location = new Point(44, 48);
             label1.Name = "label1";
-            label1.Size = new Size(135, 15);
+            label1.Size = new Size(171, 20);
             label1.TabIndex = 1;
             label1.Text = "Зарегистрировать ЖЭК";
             // 
             // textReg
             // 
-            textReg.Location = new Point(122, 66);
+            textReg.Location = new Point(139, 132);
+            textReg.Margin = new Padding(3, 4, 3, 4);
             textReg.Name = "textReg";
-            textReg.Size = new Size(100, 23);
+            textReg.Size = new Size(114, 27);
             textReg.TabIndex = 2;
             // 
             // textEmail
             // 
-            textEmail.Location = new Point(122, 244);
+            textEmail.Location = new Point(139, 369);
+            textEmail.Margin = new Padding(3, 4, 3, 4);
             textEmail.Name = "textEmail";
-            textEmail.Size = new Size(100, 23);
+            textEmail.Size = new Size(114, 27);
             textEmail.TabIndex = 6;
             // 
             // textSquare
             // 
-            textSquare.Location = new Point(122, 291);
+            textSquare.Location = new Point(139, 432);
+            textSquare.Margin = new Padding(3, 4, 3, 4);
             textSquare.Name = "textSquare";
-            textSquare.Size = new Size(100, 23);
+            textSquare.Size = new Size(114, 27);
             textSquare.TabIndex = 7;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(12, 71);
+            label2.Location = new Point(14, 139);
             label2.Name = "label2";
-            label2.Size = new Size(46, 15);
+            label2.Size = new Size(58, 20);
             label2.TabIndex = 9;
             label2.Text = "Регион";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(8, 106);
+            label3.Location = new Point(9, 185);
             label3.Name = "label3";
-            label3.Size = new Size(92, 15);
+            label3.Size = new Size(115, 20);
             label3.TabIndex = 10;
             label3.Text = "Число жителей";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(1, 156);
+            label4.Location = new Point(1, 252);
             label4.Name = "label4";
-            label4.Size = new Size(114, 30);
+            label4.Size = new Size(141, 40);
             label4.TabIndex = 11;
             label4.Text = "Число оплативших\r\n услуги";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(8, 202);
+            label5.Location = new Point(9, 313);
             label5.Name = "label5";
-            label5.Size = new Size(80, 15);
+            label5.Size = new Size(101, 20);
             label5.TabIndex = 12;
             label5.Text = "Число домов";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(8, 244);
+            label6.Location = new Point(9, 369);
             label6.Name = "label6";
-            label6.Size = new Size(36, 15);
+            label6.Size = new Size(46, 20);
             label6.TabIndex = 13;
             label6.Text = "email";
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(3, 280);
+            label7.Location = new Point(3, 417);
             label7.Name = "label7";
-            label7.Size = new Size(97, 45);
+            label7.Size = new Size(122, 60);
             label7.TabIndex = 14;
             label7.Text = "Площадь \r\nобслуживаемой\r\nтерритории";
             // 
             // panel2
             // 
-            panel2.BackColor = SystemColors.MenuBar;
+            panel2.AutoSize = true;
+            panel2.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            panel2.BackColor = SystemColors.Info;
+            panel2.Controls.Add(button5);
             panel2.Controls.Add(textInn);
             panel2.Controls.Add(textServ);
             panel2.Controls.Add(textHab);
@@ -255,58 +282,76 @@
             panel2.Controls.Add(textReg);
             panel2.Controls.Add(label1);
             panel2.Controls.Add(button1);
-            panel2.Location = new Point(349, 218);
+            panel2.Dock = DockStyle.Right;
+            panel2.Location = new Point(1007, 0);
+            panel2.Margin = new Padding(3, 4, 3, 4);
             panel2.Name = "panel2";
-            panel2.Size = new Size(227, 373);
+            panel2.Size = new Size(256, 810);
             panel2.TabIndex = 1;
+            // 
+            // button5
+            // 
+            button5.BackColor = Color.MistyRose;
+            button5.Location = new Point(3, 599);
+            button5.Margin = new Padding(3, 4, 3, 4);
+            button5.Name = "button5";
+            button5.Size = new Size(243, 31);
+            button5.TabIndex = 38;
+            button5.Text = "Зарегистрироавть случайный ЖЭК";
+            button5.UseVisualStyleBackColor = false;
+            button5.Click += button5_Click;
             // 
             // textInn
             // 
-            textInn.Location = new Point(122, 194);
+            textInn.Location = new Point(139, 303);
+            textInn.Margin = new Padding(3, 4, 3, 4);
             textInn.Name = "textInn";
-            textInn.Size = new Size(100, 23);
+            textInn.Size = new Size(114, 27);
             textInn.TabIndex = 19;
             // 
             // textServ
             // 
-            textServ.Location = new Point(122, 154);
+            textServ.Location = new Point(139, 249);
+            textServ.Margin = new Padding(3, 4, 3, 4);
             textServ.Name = "textServ";
-            textServ.Size = new Size(100, 23);
+            textServ.Size = new Size(114, 27);
             textServ.TabIndex = 18;
             // 
             // textHab
             // 
-            textHab.Location = new Point(122, 106);
+            textHab.Location = new Point(139, 185);
+            textHab.Margin = new Padding(3, 4, 3, 4);
             textHab.Name = "textHab";
-            textHab.Size = new Size(100, 23);
+            textHab.Size = new Size(114, 27);
             textHab.TabIndex = 17;
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(12, 32);
+            label8.Location = new Point(14, 87);
             label8.Name = "label8";
-            label8.Size = new Size(59, 15);
+            label8.Size = new Size(77, 20);
             label8.TabIndex = 16;
             label8.Text = "Название";
             // 
             // textNam
             // 
-            textNam.Location = new Point(122, 27);
+            textNam.Location = new Point(139, 80);
+            textNam.Margin = new Padding(3, 4, 3, 4);
             textNam.Name = "textNam";
-            textNam.Size = new Size(100, 23);
+            textNam.Size = new Size(114, 27);
             textNam.TabIndex = 15;
             // 
             // panel3
             // 
+            panel3.AutoSize = true;
             panel3.BackColor = Color.WhiteSmoke;
-            panel3.Controls.Add(button5);
+            panel3.Controls.Add(button6);
             panel3.Controls.Add(changingHous);
             panel3.Controls.Add(changingHab);
             panel3.Controls.Add(changingServ);
             panel3.Controls.Add(label20);
             panel3.Controls.Add(button4);
-            panel3.Controls.Add(panel4);
             panel3.Controls.Add(changing_number_hex);
             panel3.Controls.Add(label18);
             panel3.Controls.Add(changing_number);
@@ -321,274 +366,203 @@
             panel3.Controls.Add(changingEmail);
             panel3.Controls.Add(changingReg);
             panel3.Controls.Add(label10);
-            panel3.Controls.Add(panel2);
-            panel3.Location = new Point(241, 0);
+            panel3.Dock = DockStyle.Fill;
+            panel3.Location = new Point(269, 0);
+            panel3.Margin = new Padding(3, 4, 3, 4);
             panel3.Name = "panel3";
-            panel3.Size = new Size(600, 593);
+            panel3.Size = new Size(738, 810);
             panel3.TabIndex = 2;
-            panel3.Paint += panel3_Paint;
             // 
-            // button5
+            // button6
             // 
-            button5.BackColor = Color.MistyRose;
-            button5.Location = new Point(349, 189);
-            button5.Name = "button5";
-            button5.Size = new Size(227, 23);
-            button5.TabIndex = 38;
-            button5.Text = "Зарегистрироавть случайный ЖЭК";
-            button5.UseVisualStyleBackColor = false;
-            button5.Click += button5_Click;
+            button6.BackColor = Color.FromArgb(255, 192, 192);
+            button6.Location = new Point(576, 593);
+            button6.Name = "button6";
+            button6.Size = new Size(86, 31);
+            button6.TabIndex = 38;
+            button6.Text = "Удалить";
+            button6.UseVisualStyleBackColor = false;
+            button6.Click += button6_Click;
             // 
             // changingHous
             // 
-            changingHous.Location = new Point(155, 270);
+            changingHous.Location = new Point(177, 360);
+            changingHous.Margin = new Padding(3, 4, 3, 4);
             changingHous.Name = "changingHous";
-            changingHous.Size = new Size(100, 23);
+            changingHous.Size = new Size(114, 27);
             changingHous.TabIndex = 37;
             // 
             // changingHab
             // 
-            changingHab.Location = new Point(155, 168);
+            changingHab.Location = new Point(177, 224);
+            changingHab.Margin = new Padding(3, 4, 3, 4);
             changingHab.Name = "changingHab";
-            changingHab.Size = new Size(100, 23);
+            changingHab.Size = new Size(114, 27);
             changingHab.TabIndex = 36;
             // 
             // changingServ
             // 
-            changingServ.Location = new Point(159, 216);
+            changingServ.Location = new Point(182, 288);
+            changingServ.Margin = new Padding(3, 4, 3, 4);
             changingServ.Name = "changingServ";
-            changingServ.Size = new Size(100, 23);
+            changingServ.Size = new Size(114, 27);
             changingServ.TabIndex = 35;
             // 
             // label20
             // 
             label20.AutoSize = true;
-            label20.Location = new Point(39, 272);
+            label20.Location = new Point(45, 363);
             label20.Name = "label20";
-            label20.Size = new Size(80, 15);
+            label20.Size = new Size(101, 20);
             label20.TabIndex = 34;
             label20.Text = "Число домов";
             // 
             // button4
             // 
-            button4.Location = new Point(99, 445);
+            button4.Location = new Point(113, 593);
+            button4.Margin = new Padding(3, 4, 3, 4);
             button4.Name = "button4";
-            button4.Size = new Size(75, 23);
+            button4.Size = new Size(86, 31);
             button4.TabIndex = 33;
             button4.Text = "Изменить";
             button4.UseVisualStyleBackColor = true;
             button4.Click += button4_Click;
             // 
-            // panel4
-            // 
-            panel4.Controls.Add(button3);
-            panel4.Controls.Add(textBox2);
-            panel4.Controls.Add(textBox1);
-            panel4.Controls.Add(label22);
-            panel4.Controls.Add(label21);
-            panel4.Controls.Add(label19);
-            panel4.Location = new Point(349, 3);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(227, 174);
-            panel4.TabIndex = 32;
-            // 
-            // button3
-            // 
-            button3.BackColor = Color.Ivory;
-            button3.Location = new Point(5, 143);
-            button3.Name = "button3";
-            button3.Size = new Size(214, 26);
-            button3.TabIndex = 7;
-            button3.Text = "Зарегистрировать";
-            button3.UseVisualStyleBackColor = false;
-            button3.Click += button3_Click;
-            // 
-            // textBox2
-            // 
-            textBox2.Location = new Point(113, 84);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(100, 23);
-            textBox2.TabIndex = 6;
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(113, 43);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(100, 23);
-            textBox1.TabIndex = 5;
-            // 
-            // label22
-            // 
-            label22.AutoSize = true;
-            label22.Location = new Point(12, 51);
-            label22.Name = "label22";
-            label22.Size = new Size(59, 15);
-            label22.TabIndex = 4;
-            label22.Text = "Название";
-            label22.Click += label22_Click;
-            // 
-            // label21
-            // 
-            label21.AutoSize = true;
-            label21.Location = new Point(12, 87);
-            label21.Name = "label21";
-            label21.Size = new Size(46, 15);
-            label21.TabIndex = 3;
-            label21.Text = "Регион";
-            // 
-            // label19
-            // 
-            label19.AutoSize = true;
-            label19.BackColor = Color.Linen;
-            label19.Location = new Point(53, 10);
-            label19.Name = "label19";
-            label19.Size = new Size(135, 15);
-            label19.TabIndex = 2;
-            label19.Text = "Зарегистрировать ЖЭК";
-            // 
             // changing_number_hex
             // 
             changing_number_hex.AutoSize = true;
-            changing_number_hex.Location = new Point(230, 90);
+            changing_number_hex.Location = new Point(263, 120);
             changing_number_hex.Name = "changing_number_hex";
-            changing_number_hex.Size = new Size(13, 15);
+            changing_number_hex.Size = new Size(17, 20);
             changing_number_hex.TabIndex = 31;
             changing_number_hex.Text = "0";
             // 
             // label18
             // 
             label18.AutoSize = true;
-            label18.Location = new Point(39, 90);
+            label18.Location = new Point(45, 120);
             label18.Name = "label18";
-            label18.Size = new Size(136, 15);
+            label18.Size = new Size(173, 20);
             label18.TabIndex = 30;
             label18.Text = "id в 16-ричной системе";
             // 
             // changing_number
             // 
             changing_number.AutoSize = true;
-            changing_number.Location = new Point(159, 59);
+            changing_number.Location = new Point(182, 79);
             changing_number.Name = "changing_number";
-            changing_number.Size = new Size(13, 15);
+            changing_number.Size = new Size(17, 20);
             changing_number.TabIndex = 29;
             changing_number.Text = "0";
             // 
             // label17
             // 
             label17.AutoSize = true;
-            label17.Location = new Point(41, 59);
+            label17.Location = new Point(47, 79);
             label17.Name = "label17";
-            label17.Size = new Size(17, 15);
+            label17.Size = new Size(22, 20);
             label17.TabIndex = 28;
             label17.Text = "id";
             // 
             // changing_name
             // 
             changing_name.AutoSize = true;
-            changing_name.Location = new Point(159, 35);
+            changing_name.Location = new Point(182, 47);
             changing_name.Name = "changing_name";
-            changing_name.Size = new Size(13, 15);
+            changing_name.Size = new Size(17, 20);
             changing_name.TabIndex = 27;
             changing_name.Text = "0";
             // 
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(41, 168);
+            label11.Location = new Point(47, 224);
             label11.Name = "label11";
-            label11.Size = new Size(92, 15);
+            label11.Size = new Size(115, 20);
             label11.TabIndex = 22;
             label11.Text = "Число жителей";
             // 
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(36, 342);
+            label12.Location = new Point(41, 456);
             label12.Name = "label12";
-            label12.Size = new Size(97, 45);
+            label12.Size = new Size(122, 60);
             label12.TabIndex = 26;
             label12.Text = "Площадь \r\nобслуживаемой\r\nтерритории";
             // 
             // label13
             // 
             label13.AutoSize = true;
-            label13.Location = new Point(41, 306);
+            label13.Location = new Point(47, 408);
             label13.Name = "label13";
-            label13.Size = new Size(36, 15);
+            label13.Size = new Size(46, 20);
             label13.TabIndex = 25;
             label13.Text = "email";
             // 
             // label15
             // 
             label15.AutoSize = true;
-            label15.Location = new Point(34, 218);
+            label15.Location = new Point(39, 291);
             label15.Name = "label15";
-            label15.Size = new Size(114, 30);
+            label15.Size = new Size(141, 40);
             label15.TabIndex = 23;
             label15.Text = "Число оплативших\r\n услуги";
             // 
             // label16
             // 
             label16.AutoSize = true;
-            label16.Location = new Point(41, 130);
+            label16.Location = new Point(47, 173);
             label16.Name = "label16";
-            label16.Size = new Size(46, 15);
+            label16.Size = new Size(58, 20);
             label16.TabIndex = 21;
             label16.Text = "Регион";
             // 
             // changingSquare
             // 
-            changingSquare.Location = new Point(155, 353);
+            changingSquare.Location = new Point(177, 471);
+            changingSquare.Margin = new Padding(3, 4, 3, 4);
             changingSquare.Name = "changingSquare";
-            changingSquare.Size = new Size(100, 23);
+            changingSquare.Size = new Size(114, 27);
             changingSquare.TabIndex = 20;
             // 
             // changingEmail
             // 
-            changingEmail.Location = new Point(155, 306);
+            changingEmail.Location = new Point(177, 408);
+            changingEmail.Margin = new Padding(3, 4, 3, 4);
             changingEmail.Name = "changingEmail";
-            changingEmail.Size = new Size(100, 23);
+            changingEmail.Size = new Size(114, 27);
             changingEmail.TabIndex = 19;
             // 
             // changingReg
             // 
-            changingReg.Location = new Point(155, 128);
+            changingReg.Location = new Point(177, 171);
+            changingReg.Margin = new Padding(3, 4, 3, 4);
             changingReg.Name = "changingReg";
-            changingReg.Size = new Size(100, 23);
+            changingReg.Size = new Size(114, 27);
             changingReg.TabIndex = 15;
             // 
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(40, 32);
+            label10.Location = new Point(46, 43);
             label10.Name = "label10";
-            label10.Size = new Size(94, 15);
+            label10.Size = new Size(119, 20);
             label10.TabIndex = 2;
             label10.Text = "Информация о ";
             // 
-            // count
-            // 
-            count.AutoSize = true;
-            count.Location = new Point(186, 570);
-            count.Name = "count";
-            count.Size = new Size(13, 15);
-            count.TabIndex = 5;
-            count.Text = "0";
-            // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightGray;
-            ClientSize = new Size(839, 595);
+            ClientSize = new Size(1263, 810);
             Controls.Add(panel3);
             Controls.Add(panel1);
-            Margin = new Padding(3, 2, 3, 2);
+            Controls.Add(panel2);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Form1";
-            Text = "Form1";
+            Text = "Лабораторная работа 1 Сахно Никитов";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)search).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)textInn).EndInit();
@@ -599,9 +573,8 @@
             ((System.ComponentModel.ISupportInitialize)changingHous).EndInit();
             ((System.ComponentModel.ISupportInitialize)changingHab).EndInit();
             ((System.ComponentModel.ISupportInitialize)changingServ).EndInit();
-            panel4.ResumeLayout(false);
-            panel4.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -653,8 +626,11 @@
         private NumericUpDown changingServ;
         private Label label20;
         private TextBox changingSquare;
-        private NumericUpDown search;
         private Button button5;
         private Label count;
+        private Button check;
+        private Button button6;
+        private TextBox textBox3;
+        private TextBox search;
     }
 }

@@ -1,25 +1,31 @@
 using System.Drawing;
 using System.Xml.Linq;
+using static System.ComponentModel.Design.ObjectSelectorEditor;
 
 namespace OOP1lb
 {
-    public partial class Form1 : Form
+    internal partial class Form1 : Form
     {
-        List<Zheck> zheckList;
-        int selectedNum = 0;
+        String selectedkey = "";
+        MyHashTable zheckList = new MyHashTable();
         public Form1()
         {
             InitializeComponent();
         }
-        public Form1(List<Zheck> zheckList1)
+
+        public Form1(MyHashTable zheckList1)
         {
             InitializeComponent();
+            foreach (Zheck zheck in zheckList1) listBox1.Items.Add(zheck.Name1);
             zheckList = zheckList1;
-        }
-
-        private void panel3_Paint(object sender, PaintEventArgs e)
-        {
-
+            zheckList.objectCreated += (String key) =>
+            {
+                MessageBox.Show("объект  " + key + " создан");
+            };
+            zheckList.objectDeleted += (String key) =>
+            {
+                MessageBox.Show("объект  " + key + " удален");
+            };
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -50,8 +56,8 @@ namespace OOP1lb
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            selectedNum = listBox1.SelectedIndex + 1;
-            Zheck selected = zheckList.Find(item => item.Number1 == selectedNum);
+            selectedkey = (String)listBox1.SelectedItem;
+            Zheck? selected = zheckList[selectedkey];
             if (selected != null)
             {
                 SelectedZheck(selected);
@@ -60,20 +66,13 @@ namespace OOP1lb
 
         private void button4_Click(object sender, EventArgs e)
         {
-            int selectedIndex = 0;
             try
             {
-                selectedIndex = zheckList.FindIndex(item => item.Number1 == selectedNum);
-                if (selectedIndex < 0 || selectedIndex > zheckList.Count - 1)
+                if (!zheckList.Contains(selectedkey))
                 {
-                    throw new ArrayExeption("Ёлемент не найден", selectedIndex);
+                    throw new ArrayExeption("Ёлемент не найден", selectedkey);
                 }
-                Zheck selected = zheckList[selectedIndex];
-
-                if (selectedIndex < 0)
-                {
-                    return;
-                }
+                Zheck? selected = zheckList[selectedkey];
                 selected.ContactEmail1 = changingEmail.Text;
                 selected.NumberHabitians1 = (double)changingHab.Value;
                 selected.NumberOfBuildings1 = (double)changingHous.Value;
@@ -114,15 +113,14 @@ namespace OOP1lb
         {
             try
             {
-                int selectedIndex = (int)search.Value;
-                if (selectedIndex < 0 || selectedIndex > zheckList.Count - 1)
-                {
-                    throw new ArrayExeption("Ёлемент не найден", selectedIndex);
-                }
-                Zheck selected = zheckList[selectedIndex];
+                Zheck? selected = zheckList[search.Text];
                 if (selected != null)
                 {
                     SelectedZheck(selected);
+                }
+                else
+                {
+                    throw new ArrayExeption("Ёлемент не найден ", search.Text);
                 }
             }
             catch (ArrayExeption ex)
@@ -140,8 +138,8 @@ namespace OOP1lb
                 string region = textBox2.Text;
                 Zheck zheck = new Zheck(region, name);
                 zheckList.Add(zheck);
-                count.Text = Zheck.counter.ToString();
-                listBox1.Items.Add(zheck.Name1);
+                count.Text = zheckList.Count.ToString();
+                listBox1.Items.Add(zheck);
             }
             catch (MyException ex)
             {
@@ -153,13 +151,33 @@ namespace OOP1lb
         {
             Zheck zheck = new();
             zheckList.Add(zheck);
-            count.Text = Zheck.counter.ToString();
+            count.Text = zheckList.Count.ToString();
             listBox1.Items.Add(zheck.Name1);
         }
 
-        private void label22_Click(object sender, EventArgs e)
+        private void button6_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if (!zheckList.Contains(selectedkey))
+                {
+                    throw new ArrayExeption("Ёлемент не существует");
+                }
 
+                zheckList.Remove(selectedkey);
+                listBox1.Items.Remove(selectedkey);
+                selectedkey = "";
+                count.Text = zheckList.Count.ToString();
+            }
+            catch (ArrayExeption ex)
+            {
+                Win32.MessageBox(0, ex.Message, "ќшибка", 0);
+            }
+        }
+
+        private void check_Click(object sender, EventArgs e)
+        {
+            new Form2().Show();
         }
     }
 }

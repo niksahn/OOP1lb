@@ -2,7 +2,8 @@ namespace OOP1lb
 {
     internal static class Program
     {
-        static List<Zheck> zheckList = new();
+       static MyHashTable zheckList = new MyHashTable();
+
         /// <summary>
         ///  ¬ходна€ точка в приложение.
         /// </summary>
